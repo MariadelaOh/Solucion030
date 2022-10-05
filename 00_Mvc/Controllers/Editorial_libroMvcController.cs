@@ -17,7 +17,7 @@ namespace _00_Mvc.Controllers
         // GET: Editorial_libroMvc
         public ActionResult Index(int? id, bool? editorial)
         {
-            var editorial_libros = db.editorial_libro.Include(l => l.libro).Include(l => l.editorial);
+            IList<editorial_libro> editorial_libros = db.editorial_libro.Include(l => l.libro).Include(l => l.editorial).ToList();
 
             if (id != null && id > 0)
             {
@@ -25,7 +25,7 @@ namespace _00_Mvc.Controllers
                 {
                     if (editorial == true)
                     {
-                        editorial_libros = editorial_libros.Where(l => l.id == id);
+                        editorial_libros = editorial_libros.Where(l => l.id == id).ToList();
 
                         if (editorial_libros != null && editorial_libros.Count() > 0)
                         {
@@ -34,7 +34,7 @@ namespace _00_Mvc.Controllers
                     }
                     else
                     {
-                        editorial_libros = editorial_libros.Where(x => x.id_libro == id);
+                        editorial_libros = editorial_libros.Where(x => x.id_libro == id).ToList();
 
                         if (editorial_libros != null && editorial_libros.Count() > 0)
                         {
@@ -44,7 +44,7 @@ namespace _00_Mvc.Controllers
                 }
             }
 
-            return View(editorial_libros.ToList());
+            return View(editorial_libros);
         }
 
 

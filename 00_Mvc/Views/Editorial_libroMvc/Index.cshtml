@@ -36,9 +36,11 @@
             @Html.DisplayFor(modelItem => item.libro.nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+            @Html.ActionLink("Libros de la Categoria", "Index", "librosMvc", new { id = item.id, categoria = true }, null)
+
         </td>
     </tr>
 }

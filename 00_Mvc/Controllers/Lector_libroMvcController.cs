@@ -17,7 +17,7 @@ namespace _00_Mvc.Controllers
         // GET: Lector_libroMvc
         public ActionResult Index(int? id, bool? lector)
         {
-            var lector_libros = db.lector_libro.Include(l => l.libro).Include(l => l.lector);
+           IList<lector_libro> lector_libros = db.lector_libro.Include(l => l.libro).Include(l => l.lector).ToList();
 
             if (id != null && id > 0)
             {
@@ -25,7 +25,7 @@ namespace _00_Mvc.Controllers
                 {
                     if (lector == true)
                     {
-                        lector_libros = lector_libros.Where(l => l.id == id);
+                        lector_libros = lector_libros.Where(l => l.id == id).ToList();
 
                         if (lector_libros != null && lector_libros.Count() > 0)
                         {
@@ -34,7 +34,7 @@ namespace _00_Mvc.Controllers
                     }
                     else
                     {
-                        lector_libros = lector_libros.Where(x => x.id_libro == id);
+                        lector_libros = lector_libros.Where(x => x.id_libro == id).ToList();
 
                         if (lector_libros != null && lector_libros.Count() > 0)
                         {
@@ -44,7 +44,7 @@ namespace _00_Mvc.Controllers
                 }
             }
 
-            return View(lector_libros.ToList());
+            return View(lector_libros);
         }
 
 

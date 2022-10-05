@@ -21,19 +21,53 @@ namespace _00_Mvc.Controllers
         }
 
         // GET: EditorialsMvc/Details/5
-        public ActionResult Details(int? id)
+
+        public ActionResult Details(int? id, bool? siguiente)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            editorial editorial = db.editorial.Find(id);
-            if (editorial == null)
+            editorial editorialX = null;
+            if (siguiente == null)
             {
-                return HttpNotFound();
+                editorialX = db.editorial.Where(x => x.id == id.Value).FirstOrDefault();
             }
-            return View(editorial);
+            else
+            {
+                if (siguiente.Value == true)
+                {
+                    editorialX = db.editorial.Where(x => x.id > id.Value).FirstOrDefault();
+                }
+                else
+                {
+                    IList<editorial> editorials = db.editorial.Where(x => x.id < id.Value).ToList();
+                    if (editorials != null && editorials.Count() > 0)
+                    {
+                        int? idEditorial = editorials.Max(x => x.id);
+                        editorialX = db.editorial.Where(x => x.id == idEditorial.Value).FirstOrDefault();
+                    }
+                }
+            }
+            if (editorialX == null)
+            {
+                editorialX = db.editorial.Where(x => x.id == id.Value).FirstOrDefault();
+            }
+            return View(editorialX);
         }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    editorial editorial = db.editorial.Find(id);
+        //    if (editorial == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(editorial);
+        //}
 
         // GET: EditorialsMvc/Create
         public ActionResult Create()

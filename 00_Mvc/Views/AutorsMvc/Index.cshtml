@@ -38,7 +38,7 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
             @Html.ActionLink("Details", "Details", new { id = item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
-            @Html.ActionLink("Libros del Autor", "Index", "Libros", new { id = item.id, libro = false }, null)
+            @Html.ActionLink("Libros del Autor", "Index", "librosMvc", new { id = item.id, categoria = false }, null)
 
         </td>
     </tr>

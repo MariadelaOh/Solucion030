@@ -21,18 +21,38 @@ namespace _00_Mvc.Controllers
         }
 
         // GET: LectorsMvc/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, bool? siguiente)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            lector lector = db.lector.Find(id);
-            if (lector == null)
+            lector lectorX = null;
+            if (siguiente == null)
             {
-                return HttpNotFound();
+                lectorX = db.lector.Where(x => x.id == id.Value).FirstOrDefault();
             }
-            return View(lector);
+            else
+            {
+                if (siguiente.Value == true)
+                {
+                    lectorX = db.lector.Where(x => x.id > id.Value).FirstOrDefault();
+                }
+                else
+                {
+                    IList<lector> lectors = db.lector.Where(x => x.id < id.Value).ToList();
+                    if (lectors != null && lectors.Count() > 0)
+                    {
+                        int? idCategoria = lectors.Max(x => x.id);
+                        lectorX = db.lector.Where(x => x.id == idCategoria.Value).FirstOrDefault();
+                    }
+                }
+            }
+            if (lectorX == null)
+            {
+                lectorX = db.lector.Where(x => x.id == id.Value).FirstOrDefault();
+            }
+            return View(lectorX);
         }
 
         // GET: LectorsMvc/Create

@@ -21,18 +21,38 @@ namespace _00_Mvc.Controllers
         }
 
         // GET: CategoriasMvc/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, bool? siguiente)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            categoria categoria = db.categoria.Find(id);
-            if (categoria == null)
+            categoria categoriaX = null;
+            if (siguiente == null)
             {
-                return HttpNotFound();
+                categoriaX = db.categoria.Where(x => x.id == id.Value).FirstOrDefault();
             }
-            return View(categoria);
+            else
+            {
+                if (siguiente.Value == true)
+                {
+                    categoriaX = db.categoria.Where(x => x.id > id.Value).FirstOrDefault();
+                }
+                else
+                {
+                    IList<categoria> categorias = db.categoria.Where(x => x.id < id.Value).ToList();
+                    if (categorias != null && categorias.Count() > 0)
+                    {
+                        int? idCategoria = categorias.Max(x => x.id);
+                        categoriaX = db.categoria.Where(x => x.id == idCategoria.Value).FirstOrDefault();
+                    }
+                }
+            }
+            if (categoriaX == null)
+            {
+                categoriaX = db.categoria.Where(x => x.id == id.Value).FirstOrDefault();
+            }
+            return View(categoriaX);
         }
 
         // GET: CategoriasMvc/Create
