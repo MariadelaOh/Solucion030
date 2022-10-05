@@ -1,0 +1,131 @@
+﻿@model _04_Data.lector_libro
+
+@{
+    ViewBag.Title = "Details";
+    int miId = Model.id + 1;
+}
+
+<h2>Details</h2>
+
+<div id="LectorLibroMvcPartialView "></div>
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+
+
+
+
+</p>
+
+
+
+@{
+    string onClickSiguiente = "lector_libro(" + Model.id + "," + 0 + ")";
+    string onClickAnterior = "lector_libro(" + Model.id + "," + 1 + ")";
+}
+<input type="button" value="Anterior" onclick=@onClickAnterior>
+<input type="button" value="Siguiente" onclick=@onClickSiguiente>
+
+
+
+
+<script type="text/javascript">
+    function lector_libro(param1, param2) {
+        var apiUrl = 'https://localhost:44324/Api/lector_libro/';
+
+        if (param1 > 0) {
+
+            var boolSiguiente = false;
+
+            if (param2 != null && param2 > 0) {
+
+                boolSiguiente = true;
+            }
+
+
+            apiUrl = apiUrl + "?id=" + param1 + "&siguiente=" + boolSiguiente;
+            //llamamos a un objeto de la librería jQuery y le pasamos la apiUrl
+            $.ajax(
+                {
+                    //parámetros de configuración del objeto Ajax de jQuery
+                    type: "GET", //HTTP GET Method
+                    url: apiUrl//, // Controller/View
+                    //data: No es necesario: Es GET
+                    //el objeto nos muestra lo que le ha devuelto la api como parámetro: "res"
+                }).done(function (res) {
+                    //Enviamos el jSon "res" al EmpleadosMvcController
+                    //método: _EmpleadoMvcPartialView(res)
+                    /*var param1Empleado = '#EmpleadoMvcOtraPartialView' + param1;*/
+                    $.ajax(
+                        {
+                            type: "POST", //HTTP POST Method
+                            //url: "../_EmpleadoMvcPartialView", // Controller/View
+                            url: "_LectorLibroMvcPartialView", // Controller/View
+                            data: res
+                            //Nos devuelve una respuesta "resDeLaRes"
+                            //Que es un string con el html de la vista _EmpleadoMvcPartialView
+                        }).done(function (resDeLaRes) {
+                            /*  $('.miClase').empty();*/
+                            //Cargamos la Vista Html dentro del <div>
+                            $(param1Empleado).empty().append(resDeLaRes);
+                            //$('#LectorLibroMvcPartialView' + param1).empty().append(resDeLaRes);
+                        }).fail(function (resDeLaRes) {
+                            console.log(resDeLaRes);
+                        }).always(function (resDeLaRes) {
+                            console.log(resDeLaRes);
+                        });
+                }).fail(function (res) {
+                    console.log(res);
+                }).always(function (res) {
+                    console.log(res);
+                });
+        }
+    }
+</script>
+
+@*<div>
+        <h4>lector_libro</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.resenya)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.resenya)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.puntuacion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.puntuacion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.lector.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.lector.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.libro.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.libro.nombre)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

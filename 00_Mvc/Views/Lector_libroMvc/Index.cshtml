@@ -1,0 +1,58 @@
+﻿@model IEnumerable<_04_Data.lector_libro>
+
+@{
+    ViewBag.Title = "Index";
+    string muestraMadre = "";
+    if (ViewBag.Message !="")
+    {
+        muestraMadre = ViewBag.Message;
+    }
+}
+
+<h2>Index</h2>
+<h3>@muestraMadre</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.resenya)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puntuacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lector.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libro.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.resenya)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.puntuacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lector.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.libro.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+
+        </td>
+    </tr>
+}
+
+</table>

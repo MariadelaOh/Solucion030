@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f26c00aa09b4aada857dca93d97a8ad" Name="Diagram1">
+        <EntityTypeShape EntityType="BookCornerModel.autor" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.categoria" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.editorial" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.editorial_libro" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.lector" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.lector_libro" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.libro" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookCornerModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="BookCornerModel.FK_libro_autor" ManuallyRouted="false" />
+        <AssociationConnector Association="BookCornerModel.FK_libro_categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="BookCornerModel.FK_editorial_libro_editorial" ManuallyRouted="false" />
+        <AssociationConnector Association="BookCornerModel.FK_editorial_libro_libro" ManuallyRouted="false" />
+        <AssociationConnector Association="BookCornerModel.FK_lector_libro_lector" ManuallyRouted="false" />
+        <AssociationConnector Association="BookCornerModel.FK_lector_libro_libro" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

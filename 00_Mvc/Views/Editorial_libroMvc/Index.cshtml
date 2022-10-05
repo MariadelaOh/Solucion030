@@ -1,0 +1,46 @@
+﻿@model IEnumerable<_04_Data.editorial_libro>
+
+@{
+    
+    ViewBag.Title = "Index";
+    string muestraMadre = "";
+    if (ViewBag.Message != "")
+    {
+        muestraMadre = ViewBag.Message;
+    }
+}
+
+<h2>Index</h2>
+<h3>@muestraMadre</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.editorial.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libro.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.editorial.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.libro.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

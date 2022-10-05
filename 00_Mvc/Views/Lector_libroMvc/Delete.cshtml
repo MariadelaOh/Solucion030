@@ -1,0 +1,56 @@
+﻿@model _04_Data.lector_libro
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>lector_libro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.resenya)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resenya)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puntuacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puntuacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lector.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lector.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.libro.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libro.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
