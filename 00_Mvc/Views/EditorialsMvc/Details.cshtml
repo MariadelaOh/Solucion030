@@ -4,23 +4,46 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<section class="generic-banner">
+    <div class="container">
+        <div class=@*"row height align-items-center justify-content-center"*@>
+            <div class="col-lg-10">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">EDITORIAL</h2>
+                    <p class="text-white">Listado de las editoriales más importante</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
 
-<div>
-    <h4>editorial</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+        <div class="section-top-border">
+            <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                <div>
+                    <h4>editorial</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.nombre)
+                        </dt>
 
-    </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.nombre)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

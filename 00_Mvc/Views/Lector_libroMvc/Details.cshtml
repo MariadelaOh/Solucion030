@@ -5,49 +5,57 @@
     int miId = Model.id + 1;
 }
 
-<h2>Details</h2>
+<section class="generic-banner">
+    <div class="container">
+        <div class=@*"row height align-items-center justify-content-center"*@>
+            <div class="col-lg-10">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">LECTORES DE LIBROS</h2>
+                    <p class="text-white">Listado de los lectores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
 
-<div id="LectorLibroMvcPartialView "></div>
+        <div class="section-top-border">
+            <div class="row">
 
-
-
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-
-
-
-
-</p>
-
-
-
-@{
-    string onClickSiguiente = "lector_libro(" + Model.id + "," + 0 + ")";
-    string onClickAnterior = "lector_libro(" + Model.id + "," + 1 + ")";
-}
-<input type="button" value="Anterior" onclick=@onClickAnterior>
-<input type="button" value="Siguiente" onclick=@onClickSiguiente>
+                <div>
+                    <div id="LectorLibroMvcPartialView"></div>
 
 
 
 
-<script type="text/javascript">
+                    <p>
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+                        @Html.ActionLink("Volver", "Index")
+
+
+                    </p>
+
+
+
+                    <script type="text/javascript">
+
+    document.body.onload = function () {
+        lector_libro(@miId, 0);
+    }
+
     function lector_libro(param1, param2) {
         var apiUrl = 'https://localhost:44324/Api/lector_libro/';
 
         if (param1 > 0) {
-
-            var boolSiguiente = false;
-
-            if (param2 != null && param2 > 0) {
-
-                boolSiguiente = true;
-            }
-
-
-            apiUrl = apiUrl + "?id=" + param1 + "&siguiente=" + boolSiguiente;
+            //apiUrl = apiUrl + "/" + param1 + "/" + siguente;
+            //var boolSiguiente = 0;
+            //if (param2 != null && param2 > 0) {
+            //    boolSiguiente = 1;
+            //}
+            apiUrl = apiUrl + "?id=" + param1 + "&siguiente=" + param2;
             //llamamos a un objeto de la librería jQuery y le pasamos la apiUrl
             $.ajax(
                 {
@@ -58,21 +66,20 @@
                     //el objeto nos muestra lo que le ha devuelto la api como parámetro: "res"
                 }).done(function (res) {
                     //Enviamos el jSon "res" al EmpleadosMvcController
-                    //método: _EmpleadoMvcPartialView(res)
-                    /*var param1Empleado = '#EmpleadoMvcOtraPartialView' + param1;*/
+                    //método: _EmpleadoMvcOtraPartialView(res)
                     $.ajax(
                         {
                             type: "POST", //HTTP POST Method
-                            //url: "../_EmpleadoMvcPartialView", // Controller/View
-                            url: "_LectorLibroMvcPartialView", // Controller/View
+                            //url: "_EmpleadoMvcOtraPartialView", // Controller/View
+                            url: "../_LectorLibroMvcPartialView", // Controller/View
                             data: res
                             //Nos devuelve una respuesta "resDeLaRes"
-                            //Que es un string con el html de la vista _EmpleadoMvcPartialView
+                            //Que es un string con el html de la vista _EmpleadoMvcOtraPartialView
                         }).done(function (resDeLaRes) {
-                            /*  $('.miClase').empty();*/
+                            //Borramos lo que pueda haber en todos los div de la Class = miClase
+                            //$('.miClase').empty();
                             //Cargamos la Vista Html dentro del <div>
-                            $(param1Empleado).empty().append(resDeLaRes);
-                            //$('#LectorLibroMvcPartialView' + param1).empty().append(resDeLaRes);
+                            $('#LectorLibroMvcPartialView').empty().append(resDeLaRes);
                         }).fail(function (resDeLaRes) {
                             console.log(resDeLaRes);
                         }).always(function (resDeLaRes) {
@@ -85,47 +92,14 @@
                 });
         }
     }
-</script>
+                    </script>
 
-@*<div>
-        <h4>lector_libro</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.resenya)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.resenya)
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.puntuacion)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.puntuacion)
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.lector.nombre)
-            </dt>
+                </div>
+            </div>
+        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.lector.nombre)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.libro.nombre)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.libro.nombre)
-            </dd>
-
-        </dl>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@

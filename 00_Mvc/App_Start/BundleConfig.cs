@@ -8,8 +8,8 @@ namespace _00_Mvc
         // Para obtener más información sobre las uniones, visite https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                                        "~/Scripts/jquery-{version}.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            //                            "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery224").Include(
                                   "~/Scripts/vendor/jquery-2.2.4.min.js"));
@@ -23,13 +23,15 @@ namespace _00_Mvc
             bundles.Add(new ScriptBundle("~/bundles/hoverIntent").Include(
                "~/Scripts/hoverIntent.js"));
 
+            //bundles.Add(new ScriptBundle("~/bundles/superfish").Include(
+            //  "~/Scripts/superfish.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/superfishmin").Include(
               "~/Scripts/superfish.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryajaxchimp").Include(
                                  "~/Scripts/jquery.ajaxchimp.min.js"));
-
-         
+                     
             bundles.Add(new ScriptBundle("~/bundles/jquerymagnific").Include(
                                   "~/Scripts/jquery.magnific-popup.min.js"));
 
@@ -48,60 +50,41 @@ namespace _00_Mvc
             bundles.Add(new ScriptBundle("~/bundles/waypoints").Include(
                                 "~/Scripts/waypoints.min.js"));
 
-
             bundles.Add(new ScriptBundle("~/bundles/jquerycounterup").Include(
                                  "~/Scripts/jquery.counterup.min.js"));
-
-           
 
             bundles.Add(new ScriptBundle("~/bundles/mail").Include(
                                  "~/Scripts/mail-script.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+            bundles.Add(new ScriptBundle("~/bundles/mainjs").Include(
                                 "~/Scripts/main.js"));
-           
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                      "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/youtube").Include(
+                              "~/Scripts/youtube.js"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            //          "~/Scripts/jquery.validate*"));
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información sobre los formularios.  De esta manera estará
             // para la producción, use la herramienta de compilación disponible en https://modernizr.com para seleccionar solo las pruebas que necesite.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+            //            "~/Scripts/modernizr-*"));
 
-                
-                   
-           
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                                                        
-                      "~/Scripts/bootstrap.js"));
-            
+            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+
+            //         "~/Scripts/bootstrap.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                            "~/Content/linearicons.css",
                            "~/Content/font-awesome.min.css",
                           "~/Content/bootstrap.css",
-                       
                           "~/Content/magnific-popup.css",
                           "~/Content/nice-select.css",
                           "~/Content/animate.min.css",
-                          "~/Content/owl.carousel.css",                                
-                             "~/Content/main.css"));
+                          "~/Content/owl.carousel.css",
+                                  "~/Content/main.css"));
 
-            //bundles.Add(new StyleBundle("~/Content/scss").Include(
-
-            //           "~/Content/scss/theme/_elements.scss",
-
-
-            //           "~/Content/scss/theme/_flexbox.scss",
-
-            //           "~/Content/scss/theme/_footer.scss",
-
-            //           "~/Content/scss/theme/_header.scss",
-            //           "~/Content/scss/theme/_home.scss",
-            //            "~/Content/scss/bootstrap.scss",
-            //            "~/Content/scss/main.scss"
-            //                 ));
-
+            
         }
     }
 }

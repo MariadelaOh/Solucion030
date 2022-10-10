@@ -3,56 +3,110 @@
 @{
     ViewBag.Title = "Index";
     string muestraMadre = "";
-    if (ViewBag.Message !="")
+    if (ViewBag.Message != "")
     {
         muestraMadre = ViewBag.Message;
     }
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 <h3>@muestraMadre</h3>
+<!-- Start banner Area -->
+<section class="generic-banner">
+    <div class="container">
+        <div class=@*"row height align-items-center justify-content-center"*@>
+            <div class="col-lg-10">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">LECTORES DE LIBROS</h2>
+                    <p class="text-white">Listado de los lectores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.resenya)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.puntuacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lector.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.libro.nombre)
-        </th>
-        <th></th>
-    </tr>
+        <div class="section-top-border">
+            <div class="row">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.resenya)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.puntuacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lector.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.libro.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
 
-        </td>
-    </tr>
-}
+                <div class="container md-2">
+                    <div class="button-group-area mt-40">
+                        <span class="genric-btn success circle mb-30"> @Html.ActionLink("Nuevo Lector", "Create")</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="single-defination">
+                            <h4 class="mb-20">
 
-</table>
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.resenya)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.puntuacion)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.lector.nombre)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.libro.nombre)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                            </h4>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.resenya)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.puntuacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.lector.nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.libro.nombre)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+
+                                @*@{
+                                        string onClick = "miAjaxMvc(" + item.id + ")";
+
+                                        string param = "LectorLibroMvcPartialView" + item.id;
+
+                                    }
+                                    <input type="button" value="Detalle" onclick= @onClick>*@
+
+                            </td>
+                        </tr>
+
+                        @*<tr>
+                                <td id= @param colspan="6"></td>
+                            </tr>*@
+                    }
+
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- End Align Area -->

@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
-<html>
+<html html lang="zxx" class="no-js">
 <head>
+
+
     @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>*@
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TheCornerBook</title>*@
 
 
     <!-- Mobile Specific Meta -->
@@ -20,39 +22,23 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>TheBooksCorner</title>
-
+    <title>TheCornerBook</title>
+   
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
     @Styles.Render("~/Content/css")
-    
-
-    @*@Scripts.Render("~/bundles/modernizr")*@
-
-    @*<link rel="stylesheet" href="~/Content/linearicons.css">
-    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
-    <link rel="stylesheet" href="~/Content/bootstrap.css">
-    <link rel="stylesheet" href="~/Content/magnific-popup.css">
-    <link rel="stylesheet" href="~/Content/nice-select.css">
-    <link rel="stylesheet" href="~/Content//animate.min.css">
-    <link rel="stylesheet" href="~/Content/owl.carousel.css">
-    <link rel="stylesheet" href="~/Content/main.css">
-    <link rel="stylesheet" href="~/Content/scss/theme/_header.scss">*@
-
-
 
 
 </head>
 <body>
-  
+
     <header id="header" id="home">
-       
 
-
+        <nav class="container">
             <div class="header-top">
-                <div class="container">
+                <nav class="container banner-top">
                     <div class="row align-items-center justify-content-between d-flex">
                         <div id="logo">
-                            <a href="index.html"><img src="Content/Images/logo.png" width="120" alt="" title="" /></a>
+                            <a href="/home"><img src="Content/Images/logo.png" width="120" alt="" title="" /></a>
                         </div>
 
 
@@ -64,42 +50,43 @@
                                     <li>
                                         <br>
                                         <br>
-                                        Información sobre libros y autores
+                                        Libros que inspiran
                                     </li>
 
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                </nav>
             </div>
 
 
             <div class="container">
                 <div class="row align-items-center justify-content-end d-flex">
                     <!-- <div id="logo">
-              <a href="index.html"><img src="img/logo.png"  width="90" align="top" alt="" title="" /></a>
-            </div> -->
+                      <a href="index.html"><img src="img/logo.png"  width="90" align="top" alt="" title="" /></a>
+                    </div> -->
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                            <li class="menu-active"><a href="#home">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#coffee">Listado</a></li>
-                            <li><a href="#review">Por autor</a></li>
-                            <li><a href="#blog">Por género</a></li>
-                            <li class="menu-has-children">
+                            <li class="menu-active"><a href="/home">Home</a></li>
+                            <li><a href="#blog">Noticias</a></li>
+                            <li><a href="/AutorsMvc">Autores</a></li>
+                            <li><a href="/LibrosMvc">Libros</a></li>
+                            <li><a href="/CategoriasMvc">Géneros</a></li>
+                            @*<li class="menu-has-children">
                                 <a href="">Pages</a>
                                 <ul>
-                                    <li><a href="generic.html">Generic</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
+                                    <li><a href="generic.cshtml">Generic</a></li>
+                                    <li><a href="elements.cshtml">Elements</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                         </ul>
                     </nav><!-- #nav-menu-container -->
+
                 </div>
             </div>
+        </nav>
 
-        
     </header>
 
 
@@ -108,10 +95,13 @@
         <div class="container">
             <div class="row fullscreen d-flex align-items-center justify-content-start">
                 <div class="banner-content col-lg-9">
-                    <h6 class="text-white text-uppercase">Libros que inspiran</h6>
+                    <h6 class="text-white text-uppercase"></h6>
                     <h1>
-                        ¿ Que te apetece leer
-                        hoy?
+                        <br />
+                        <br />
+                        <br />
+                        ¿ Que te apetece  <br />
+                        leer hoy?
                     </h1>
                     <a href="#" class="primary-btn text-uppercase">Buscar libro o autor</a>
                 </div>
@@ -119,36 +109,64 @@
         </div>
     </section>
     <!-- End banner Area -->
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
+
+    @RenderBody()
+
+    <!-- start footer Area -->
+    <footer>
+
+        <div class="footer-area section-gap">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Hola", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    </ul>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>About Us</h6>
+                            <p>
+                                Soy coleccionista de opiniones varias y redactora de las mías propias. También hago proyectos en tres días. Una crack.
+                            </p>
+                            <p class="footer-text">
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5  col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Newsletter</h6>
+                            <p>Stay update with our latest</p>
+                            <div class="" id="mc_embed_signup">
+                                <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                                    <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                    <div style="position: absolute; left: -5000px;">
+                                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                    </div>
+
+                                    <div class="info pt-20"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                        <div class="single-footer-widget">
+                            <h6>Follow Us</h6>
+                            <p>Let us be social</p>
+                            <div class="footer-social d-flex align-items-center">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>*@
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
-    @*<script src="~/Scripts/owl.carousel.min.js"></script>*@
-
-
-
+        </div>
+    </footer>
+    <!-- End footer Area -->
+    @*@Scripts.Render("~/bundles/jquery")*@
 
     @Scripts.Render("~/bundles/jquery224")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -159,6 +177,7 @@
     @Scripts.Render("~/bundles/easingmin")
     @Scripts.Render("~/bundles/hoverIntent")
     @Scripts.Render("~/bundles/superfishmin")
+    @*@Scripts.Render("~/bundles/superfish")*@
     @Scripts.Render("~/bundles/jqueryajaxchimp")
     @Scripts.Render("~/bundles/jquerymagnific")
     @Scripts.Render("~/bundles/owlcarousel")
@@ -168,12 +187,11 @@
     @Scripts.Render("~/bundles/waypoints")
     @Scripts.Render("~/bundles/jquerycounterup")
     @Scripts.Render("~/bundles/mail")
-    @Scripts.Render("~/bundles/main")
+    @Scripts.Render("~/bundles/mainjs")
 
-
-
+    @Scripts.Render("~/bundles/youtube")
 
 
     @RenderSection("scripts", required: false)
 </body>
-    </html>
+</html lang="zxx">

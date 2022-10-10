@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<_04_Data.libro>
 
 @{
-    
+
     ViewBag.Title = "Index";
     string muestraMadre = "";
     if (ViewBag.Message != "")
@@ -10,55 +10,99 @@
     }
 }
 
-<h2>Index</h2>
+
 <h3>@muestraMadre</h3>
+<!-- Start banner Area -->
+<section class="generic-banner">
+    <div class="container">
+        <div class=@*"row height align-items-center justify-content-center"*@>
+            <div class="col-lg-10">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">LIBROS</h2>
+                    <p class="text-white">Listado de libros</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.resumen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.autor.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.categoria.nombre)
-        </th>
-        <th></th>
-    </tr>
+        <div class="section-top-border">
+            <div class="row">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.resumen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.autor.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.categoria.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
 
-</table>
+                <div class="container md-2">
+                    <div class="button-group-area mt-40">
+                        <span class="genric-btn success circle mb-30"> @Html.ActionLink("Crear Nuevo Libro", "Create")</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="single-defination">
+                            <h4 class="mb-20">
+                               
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.nombre)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.imagen)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.resumen)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.autor.nombre)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.categoria.nombre)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                            </h4>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nombre)
+                            </td>
+                            <td>
+                                <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.imagen)" alt="">
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.resumen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.autor.nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.categoria.nombre)
+                            </td>
+                            <td>
+
+                                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Borrar", "Delete", new { id = item.id }) |
+                                @Html.ActionLink("Lectores de este Libro", "Index", "lector_libroMvc", new { id = item.id, libro = true }, null)
+
+
+                            </td>
+                        </tr>
+                    }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- End Align Area -->

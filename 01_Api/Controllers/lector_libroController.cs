@@ -16,35 +16,38 @@ namespace _01_Api.Controllers
     {
         private bookCorner_dbContext db = new bookCorner_dbContext();
 
-        // GET: api/lector_libro
-        public IList<lector_libro> Getlector_libro()
-        {
-            IList<lector_libro> lector_librosTabla = db.lector_libro.ToList();
-            IList<lector_libro> lector_libros = new List<lector_libro>();
-            foreach (var lector_libroTabla in lector_librosTabla)
-            {
-                lector_libro lector_Libro = new lector_libro();
-                lector_Libro.id = lector_libroTabla.id;
-                lector_Libro.resenya = lector_libroTabla.resenya;
-                lector_Libro.puntuacion = lector_libroTabla.puntuacion;
-                lector_Libro.id_lector = lector_libroTabla.id_lector;
-                lector_Libro.id_libro = lector_libroTabla.id_libro;
-                
+        //GET: api/lector_libro
+        //public IList<lector_libro> Getlector_libro()
+        //{
+        //    //IList<lector_libro> lector_librosTabla = db.lector_libro.ToList();
+        //    IList<lector_libro> lector_libros = null;
+        //    lector_libroService service();
+        //    service = new lector_libroService();
+        //        new List<lector_libro>();
+        //    foreach (var lector_LibroTabla in lector_librosTabla)
+        //    {
+        //        lector_libro lector_Libro = new lector_libro();
+        //        lector_Libro.id = lector_LibroTabla.id;
+        //        lector_Libro.resenya = lector_LibroTabla.resenya;
+        //        lector_Libro.puntuacion = lector_LibroTabla.puntuacion;
+        //        lector_Libro.id_lector = lector_LibroTabla.id_lector;
+        //        lector_Libro.id_libro = lector_LibroTabla.id_libro;
 
-                lector_libros.Add(lector_Libro);
-            }
-            return lector_libros;
-        }
+
+        //        lector_libros.Add(lector_Libro);
+        //    }
+        //    return lector_libros;
+        //}
 
         // GET: api/lector_libro/5
         [ResponseType(typeof(lector_libro))]
         public IHttpActionResult Getlector_libro(int? id, int? siguiente)
         {
-            lector_libro lector_Libro = null;
+            lector_libro lector_LibroTabla = null;
                 
             if (siguiente == null)
             {
-                lector_Libro= db.lector_libro.Where(x => x.id == id.Value).FirstOrDefault();
+                lector_LibroTabla= db.lector_libro.Where(x => x.id == id.Value).FirstOrDefault();
 
                 return NotFound();
             }
@@ -52,7 +55,7 @@ namespace _01_Api.Controllers
             {
                 if (siguiente.Value == 1)
                 {
-                    lector_Libro = db.lector_libro.Where(x => x.id > id.Value).FirstOrDefault();
+                    lector_LibroTabla = db.lector_libro.Where(x => x.id > id.Value).FirstOrDefault();
                 }
                 else
                 {
@@ -60,28 +63,28 @@ namespace _01_Api.Controllers
                     if (lector_libros != null && lector_libros.Count() > 0)
                     {
                         int? idLector_libro = lector_libros.Max(x => x.id);
-                        lector_Libro = db.lector_libro.Where(x => x.id == idLector_libro.Value).FirstOrDefault();
+                        lector_LibroTabla = db.lector_libro.Where(x => x.id == idLector_libro.Value).FirstOrDefault();
                     }
                 }
 
             }
-            if (lector_Libro == null)
+            if (lector_LibroTabla == null)
             {
-                lector_Libro = db.lector_libro.Where(x => x.id == id.Value).FirstOrDefault();
+                lector_LibroTabla = db.lector_libro.Where(x => x.id == id.Value).FirstOrDefault();
             }
 
 
-            lector_libro lector_LibroTabla = new lector_libro();
+            lector_libro lector_Libro = new lector_libro();
 
                     
-            lector_LibroTabla.id = lector_Libro.id;
-            lector_LibroTabla.resenya = lector_Libro.resenya;
-            lector_LibroTabla.puntuacion = lector_Libro.puntuacion;
-            lector_LibroTabla.id_lector = lector_Libro.id_lector;
-            lector_LibroTabla.id_libro = lector_Libro.id_libro;
+            lector_Libro.id = lector_LibroTabla.id;
+            lector_Libro.resenya = lector_LibroTabla.resenya;
+            lector_Libro.puntuacion = lector_LibroTabla.puntuacion;
+            lector_Libro.id_lector = lector_LibroTabla.id_lector;
+            lector_Libro.id_libro = lector_LibroTabla.id_libro;
 
            
-            return Ok(lector_LibroTabla);
+            return Ok(lector_Libro);
             
         }
 

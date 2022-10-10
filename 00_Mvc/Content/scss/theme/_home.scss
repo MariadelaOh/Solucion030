@@ -85,17 +85,18 @@
 //--------- Start Banner Area -------------//
 
 .banner-area {
-	background:url(../img/header-bg.jpg) center;
-	background-size:cover;
+	background: url(../Content/Images/header-bg.jpg) center;
+	background-size: cover;
+
 	.fullscreen {
 		@include media-breakpoint-down (lg) {
 			height: 920px !important;
 		}
 	}
 
-	@media(max-width:768px){
-		background:url(../img/header-bg.jpg);
-		 background-position: 50% 90% 50% 50%;
+	@media(max-width:768px) {
+		background: url(../Content/Images/header-bg.jpg);
+		background-position: 50% 90% 50% 50%;
 	}
 }
 .banner-content {
@@ -183,20 +184,23 @@
 	}
 }
 
-.video-right{
-	background:url(../img/video-bg.jpg) no-repeat center;
-	background-size:cover;
-	height:350px;
-	border-radius:10px;
-	.overlay-bg{
-		border-radius:10px;
-		background-color:rgba(#000, .78);
+.video-right {
+	background: url(../Content/Images/video-bg.jpg) no-repeat center;
+	background-size: cover;
+	height: 350px;
+	border-radius: 10px;
+
+	.overlay-bg {
+		border-radius: 10px;
+		background-color: rgba(#000, .78);
 	}
-	.play-btn{
+
+	.play-btn {
 		z-index: 2;
 	}
-	@media(max-width:800px){
-		margin-top:100px;
+
+	@media(max-width:800px) {
+		margin-top: 100px;
 	}
 }
 
@@ -208,7 +212,7 @@
 //--------- Start menu Area -------------//
 
 .menu-area{
-	background:url(../img/menu-bg.jpg) center;
+	background:url(../Content/Images/menu-bg.jpg) center;
 	background-size:cover;
 }
 
@@ -234,7 +238,7 @@
 //--------- End menu Area -------------//
 
 
-//--------- Start gallery Area -------------//
+//--------- Start  Area -------------//
 
 .gallery-area{
 	img{
@@ -327,19 +331,19 @@
 
 //--------- start footer Area -------------//
 
-	.footer-area{
-		color:$white;
-		padding-top:220px;
-		background:url(../img/footer-bg.jpg) center;
-		background-size:cover;
-		h6{
-			color:#fff;
-			margin-bottom:25px;
-			font-size:18px;
-			font-weight:600;
-		}
+.footer-area {
+	color: $white;
+	padding-top: 220px;
+	background: url(Content/Images/footer-bg.jpg) center;
+	background-size: cover;
 
+	h6 {
+		color: #fff;
+		margin-bottom: 25px;
+		font-size: 18px;
+		font-weight: 600;
 	}
+}
 	
 	.copy-right-text{
 		i,a{

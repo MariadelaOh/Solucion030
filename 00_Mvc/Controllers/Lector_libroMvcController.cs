@@ -15,17 +15,17 @@ namespace _00_Mvc.Controllers
         private bookCorner_dbContext db = new bookCorner_dbContext();
 
         // GET: Lector_libroMvc
-        public ActionResult Index(int? id, bool? lector)
+        public ActionResult Index(int? id, bool? libro)
         {
            IList<lector_libro> lector_libros = db.lector_libro.Include(l => l.libro).Include(l => l.lector).ToList();
 
             if (id != null && id > 0)
             {
-                if (lector != null)
+                if (libro != null)
                 {
-                    if (lector == true)
+                    if (libro == true)
                     {
-                        lector_libros = lector_libros.Where(l => l.id == id).ToList();
+                        lector_libros = lector_libros.Where(l => l.id_libro == id).ToList();
 
                         if (lector_libros != null && lector_libros.Count() > 0)
                         {
@@ -34,7 +34,7 @@ namespace _00_Mvc.Controllers
                     }
                     else
                     {
-                        lector_libros = lector_libros.Where(x => x.id_libro == id).ToList();
+                        lector_libros = lector_libros.Where(x => x.id_lector == id).ToList();
 
                         if (lector_libros != null && lector_libros.Count() > 0)
                         {
@@ -84,19 +84,19 @@ namespace _00_Mvc.Controllers
 
 
         // GET: Lector_libroMvc/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            lector_libro lector_libro = db.lector_libro.Find(id);
-            if (lector_libro == null)
-            {
-                return HttpNotFound();
-            }
-            return View(lector_libro);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    lector_libro lector_libro = db.lector_libro.Find(id);
+        //    if (lector_libro == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(lector_libro);
+        //}
 
         // GET: Lector_libroMvc/Create
         public ActionResult Create()

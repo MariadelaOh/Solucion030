@@ -4,39 +4,66 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>categoria</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+<section class="generic-banner">
+    <div class="container">
+        <div class=@*"row height align-items-center justify-content-center"*@>
+            <div class="col-lg-10">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">CATEGORÍAS</h2>
+                    <p class="text-white">Géneros literarios para todos los gustos</p>
+                </div>
             </div>
         </div>
     </div>
-}
+</section>
+<!-- End banner Area -->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="section-top-border">
+            <div class="row">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                <div>
+
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Editar</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Volver", "Index")
+                    </div>
+
+                    @section Scripts {
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>

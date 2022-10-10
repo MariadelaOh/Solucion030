@@ -52,8 +52,18 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
+
+
+@{
+    string onClickAnterior = "lector_libro(" + Model.id + "," + 0 + ")";
+    string onClickSiguiente = "lector_libro(" + Model.id + "," + 1 + ")";
+}
+<input type="button" value="Anterior" onclick=@onClickAnterior>
+<input type="button" value="Siguiente" onclick=@onClickSiguiente>
+
+
+
+@{ 
+    Layout = null;
+}
